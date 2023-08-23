@@ -8,9 +8,10 @@ func ValidBraces(str string) bool {
 		'[': ']',
 		'{': '}',
 	}
-	lastBrace = str[0]
-	for _, ch := range str[1:] {
-		if bracePairs.
+	openingBraces = "([{"
+	var braces []rune;
+	for _, ch := range str {
+		if openingBraces.
 	}
 	return false
 }
