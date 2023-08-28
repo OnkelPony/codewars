@@ -3,13 +3,13 @@ package kata
 func DirReduc(arr []string) []string {
 	reduced := true
 	for reduced {
-		for i, _ := range arr {
+		reduced = false
+		for i := 0; i < len(arr) - 1; i++ {
 			if isOpposite(arr[i], arr[i+1]) {
 				reduced = true
-				arr = append(arr[0:i], arr[i+1:]...)
-			} else {
-				reduced = false
-			}
+				arr = append(arr[0:i], arr[i+2:]...)
+				break
+			} 
 		}
 	}
 	return arr
