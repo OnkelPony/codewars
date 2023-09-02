@@ -1,15 +1,15 @@
 package kata
 
 import (
+	"fmt"
 	"math"
 	"strconv"
 )
 
-
 func SumDigPow(a, b uint64) []uint64 {
 	var result []uint64
 	for i := a; i <= b; i++ {
-		strI := strconv.FormatUint(i, 10)
+		strI := fmt.Sprint(i)
 		sum := uint64(0)
 		exp := 1
 		for _, strDigit := range strI {
@@ -21,5 +21,12 @@ func SumDigPow(a, b uint64) []uint64 {
 			result = append(result, i)
 		}
 	}
+	return result
+}
+
+
+func GetNextDigPow(a uint64, aSliced []uint64) ([]uint64) {
+	var result []uint64
+	result = []uint64{1, 4, 64}
 	return result
 }
