@@ -8,7 +8,7 @@ import (
 
 
 
-func TestGetNextDigPow(t *testing.T) {
+func TestMakePowers(t *testing.T) {
 	expected := []uint64{1, 4, 64}
 	actual := kata.GetNextDigPow(uint64(123), []uint64{1, 2, 27})
 	if !reflect.DeepEqual(expected, actual)  {
