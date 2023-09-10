@@ -1,28 +1,23 @@
 package kata
 
 import (
-        "testing"
+    "testing"
+
+    "github.com/stretchr/testify/assert"
 )
 
-// TestRot13 takes a plaintext input and its expected ciphertext output as parameters
 func TestLCS(t *testing.T) {
-        // Define a slice of structs containing test inputs and corresponding outputs
-        tests := []struct {
-                StartIP       string
-                EndIP         string
-                ExpectedCount int
-        }{
-                {"10.0.0.0", "10.0.0.50", 50},
-                {"20.0.0.10", "20.0.1.0", 246},
-        }
+    tests := []struct {
+        s1, s2, expected string
+    }{
+        {"ABCD", "ACDE", "ACD"},
+        {"hello", "world", "l"},
+        {"pradedecek", "prasklina", "prak"},
+        {"132535365", "123456789", "12356"},
+    }
 
-        // Loop through each struct in the tests slice
-        for _, tt := range tests {
-                actualCount := IpsBetween(tt.StartIP, tt.EndIP)
-
-                // Use the built-in strings package Compare method to compare the expected and actual outputs
-                if actualCount != tt.ExpectedCount {
-                        t.Errorf("IpsBetween(%s, %s): expected %d but got %d", tt.StartIP, tt.EndIP, tt.ExpectedCount, actualCount)
-                }
-        }
+    for _, test := range tests {
+        output := LCS(test.s1, test.s2)
+        assert.Equal(t, test.expected, output, "LCS(%s, %s) should be %s", test.s1, test.s2, test.expected)
+    }
 }
