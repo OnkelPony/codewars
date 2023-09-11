@@ -1,12 +1,12 @@
 package kata
 
 import (
-	"strconv"
-	"strings"
+	"bytes"
+	"fmt"
 )
 
 func RGB(r, g, b int) string {
-	var result string
+	var buf bytes.Buffer
 	for _, color := range []int{r, g, b} {
 		switch {
 		case color <= 0:
@@ -15,7 +15,7 @@ func RGB(r, g, b int) string {
 			color = 255
 		default:
 		}
-		result += strings.ToUpper(strconv.FormatInt(int64(color), 16))
+		buf.WriteString(fmt.Sprintf("%02X", color))
 	}
-	return result
+	return buf.String()
 }
