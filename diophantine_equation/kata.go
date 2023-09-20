@@ -1,15 +1,14 @@
 package kata
 
+import "math"
+
 func Solequa(n int) [][]int {
 	result := [][]int{}
-	for x := n / 2 + 1; x >= 0; x-- {
-		for y := x / 2 + 1; y >= 0; y-- {
-			if (x-2*y)*(x+2*y) == n {
-				result = append(result, []int{x, y})
-			}
-			if (x-2*y)*(x+2*y) > n {
-				break
-            }
+	maxx := n/2 + 1
+	for x := maxx; x >= 0; x-- {
+		y := int(math.Sqrt(float64(x*x-n) / 4))
+		if x*x-4*y*y == n {
+			result = append(result, []int{x, y})
 		}
 	}
 	return result
