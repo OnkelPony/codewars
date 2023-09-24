@@ -6,33 +6,24 @@ const Points = 3
 
 func IsSolved(board [3][3]int) int {
 	var unifinished bool
-  // check rows
-	for row := 0; row < Rows; row++ {
-		sum := 0
-		for col := 0; col < Cols; col++ {
-			sum += Pow(Points, board[row][col])
-			if board[row][col] == 0 {
+  // check rows and columns
+	for i := 0; i < Rows; i++ {
+		sumR := 0
+    sumC := 0
+		for j := 0; j < Cols; j++ {
+			sumR += Pow(Points, board[i][j])
+      sumC += Pow(Points, board[j][i])
+      if board[i][j] == 0 {
 				unifinished = true
 			}
 		}
-		if sum == 27 {
+		if sumR == 27 || sumC == 27 {
 			return 2
-		} else if sum == 9 {
+		} else if sumR == 9 || sumC == 9 {
 			return 1
 		}
 	}
-  // check columns
-  for row := 0; row < Rows; row++ {
-		sum := 0
-		for col := 0; col < Cols; col++ {
-			sum += Pow(Points, board[col][row])
-		}
-		if sum == 27 {
-			return 2
-		} else if sum == 9 {
-			return 1
-		}
-	}
+ 
   // check diagonals
   sumB := 0
   sumS := 0
